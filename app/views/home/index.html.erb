@@ -26,3 +26,14 @@
     <% end %>
   </div>
 </div>
+
+<div class="flex items-center justify-center p-8">
+  <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
+    <h1 class="text-2xl font-bold mb-6 text-center"><%= t(".addresses_most_searched") %></h1>
+    <div class="space-y-4 text-center">
+      <% @addresses_most_searched.each do |cep| %>
+        <p class="text-lg"><%= "#{cep.state} #{cep.cep} | #{cep.quantity_searched}" %></p>
+      <% end %>
+    </div>
+  </div>
+</div>

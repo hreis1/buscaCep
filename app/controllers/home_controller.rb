@@ -1,21 +1,33 @@
 class HomeController < ApplicationController
   def index
     @address = {}
-    @error = nil
+    @addresses_most_searched = Address.order(quantity_searched: :desc).limit(3)
 
     return if params[:cep].blank?
 
-    response = Faraday.get("https://cep.awesomeapi.com.br/json/#{params[:cep]}")
+    @address = Address.find_by(cep: params[:cep])
+    if @address.present?
+      @address.increment!(:quantity_searched)
+      return
+    end
 
+    response = Faraday.get("https://cep.awesomeapi.com.br/json/#{params[:cep]}")
+    @address = { cep: params[:cep] }
     if response.status == 404
       @error = t('.cep_not_found')
-      @address[:cep] = params[:cep]
     elsif response.status == 400
       @error = t('.cep_invalid')
-      @address[:cep] = params[:cep]
-    else
+    elsif response.status == 200
       @response = response
       @address = JSON.parse(response.body).symbolize_keys
+      Address.create( cep: @address[:cep],
+                      address: @address[:address],
+                      state: @address[:state],
+                      city: @address[:city],
+                      ddd: @address[:ddd],
+                      quantity_searched: 1)
+    else
+      @error = t('.error')
     end
   end
 end

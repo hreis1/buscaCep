@@ -25,4 +25,16 @@ RSpec.describe 'Home', type: :system do
 
     expect(page).to have_text('CEP não encontrado')
   end
+
+  it 'mostra ceps mais buscados' do
+    Address.create(cep: '01001-000', address: 'Praça da Sé', city: 'São Paulo', state: 'SP', ddd: '11', quantity_searched: 2)
+    Address.create(cep: '30190-110', address: 'Avenida do Contorno', city: 'Belo Horizonte', state: 'MG', ddd: '31', quantity_searched: 3)
+    Address.create(cep: '70002-900', address: 'Esplanada dos Ministérios', city: 'Brasília', state: 'DF', ddd: '61', quantity_searched: 4)
+
+    visit root_path
+    
+    expect(page).to have_text('CEPs mais buscados')
+    expect(page.body.index('DF 70002-900')).to be < page.body.index('MG 30190-110')
+    expect(page.body.index('MG 30190-110')).to be < page.body.index('SP 01001-000')
+  end
 end

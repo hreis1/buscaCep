@@ -5,3 +5,5 @@ pt-BR:
       cep_not_found: "CEP não encontrado"
       cep_invalid: "CEP inválido"
       cep_placeholder: "Digite o CEP"
+      error: "Erro"
+      addresses_most_searched: "CEPs mais buscados"

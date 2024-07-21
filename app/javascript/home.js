@@ -15,4 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
       cepForm.submit();
     }
   });
+  cepForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+  });
 });
