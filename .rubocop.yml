@@ -1,6 +1,7 @@
 require: rubocop-rails
 
 AllCops:
+  NewCops: enable 
   SuggestExtensions: false
 
 Style/Documentation:
@@ -10,3 +11,9 @@ Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
     - 'config/**/*'
+
+Bundler/OrderedGems:
+  Enabled: true
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
