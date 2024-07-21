@@ -1,0 +1,7 @@
+pt-BR:
+  hello: "Olá mundo!"
+  home:
+    index:
+      cep_not_found: "CEP não encontrado"
+      cep_invalid: "CEP inválido"
+      cep_placeholder: "Digite o CEP"
