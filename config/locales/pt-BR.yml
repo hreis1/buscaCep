@@ -7,3 +7,4 @@ pt-BR:
       error: "Erro"
       addresses_most_searched: "CEPs mais buscados"
       addresses_most_searched_by_state: "CEPs mais buscados por estado"
+      quantity_addresses_searched_by_state: "Quantidade de CEPs buscados por estado"

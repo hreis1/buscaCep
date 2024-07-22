@@ -45,7 +45,20 @@
       <h1 class="text-2xl font-bold mb-6 text-center"><%= t(".addresses_most_searched_by_state") %></h1>
       <div class="space-y-4 text-center">
         <% @addresses_most_searched_by_state.each do |cep| %>
-          <p class="text-lg"><%= "#{cep.state} | #{cep.quantity_searched}" %></p>
+          <p class="text-lg"><%= "#{cep.state} #{cep.cep} | #{cep.quantity_searched}" %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<% if @quantity_addresses_searched_by_state.present? %>
+  <div class="flex items-center justify-center p-8">
+    <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
+      <h1 class="text-2xl font-bold mb-6 text-center"><%= t(".quantity_addresses_searched_by_state") %></h1>
+      <div class="space-y-4 text-center">
+        <% @quantity_addresses_searched_by_state.each_with_object({}) do |(state, quantity), hash| %>
+          <p class="text-lg"><%= "#{state} #{quantity}" %></p>
         <% end %>
       </div>
     </div>
