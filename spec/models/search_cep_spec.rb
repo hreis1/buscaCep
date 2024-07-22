@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe SearchCep, type: :model do
   context '.call' do
     it 'quando o CEP é encontrado no banco de dados' do
-      Address.create(cep: '01311000', address: 'Avenida Paulista', city: 'São Paulo', state: 'SP', ddd: '11', quantity_searched: 1)
+      Address.create(cep: '01311000', address: 'Avenida Paulista', city: 'São Paulo', state: 'SP', ddd: '11',
+                     quantity_searched: 1)
 
       address = SearchCep.new('01311000').call
 

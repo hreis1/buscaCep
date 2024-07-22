@@ -6,3 +6,4 @@ pt-BR:
       cep_placeholder: "Digite o CEP"
       error: "Erro"
       addresses_most_searched: "CEPs mais buscados"
+      addresses_most_searched_by_state: "CEPs mais buscados por estado"

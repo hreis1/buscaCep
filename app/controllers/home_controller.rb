@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   def index
     @addresses_most_searched = Address.most_searched
+    @addresses_most_searched_by_state = Address.most_searched_by_state
 
     return if params[:cep].blank?
 
