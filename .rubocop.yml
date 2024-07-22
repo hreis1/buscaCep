@@ -17,3 +17,6 @@ Bundler/OrderedGems:
 
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+Rails/SkipsModelValidations:
+  Enabled: false
